@@ -1,24 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+import { Theme } from './theme';
+
 @Component({
     selector: 'app-sidebar',
     templateUrl: './sidebar.component.html',
     styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-    subjectForm: FormGroup;
-    subjects: string[] = [
-        'Intelecto',
-        'Lazer',
-        'Vida Financeira'
-    ];
+    titleForm: FormGroup;
+    themes: Theme[] = [];
 
     constructor(private formBuilder: FormBuilder) { }
 
     ngOnInit() {
-        this.subjectForm = this.formBuilder.group({
-            subject: ['', [
+        this.titleForm = this.formBuilder.group({
+            title: ['', [
                 Validators.required,
                 Validators.maxLength(20)
             ]]
@@ -26,8 +24,8 @@ export class SidebarComponent implements OnInit {
     }
 
     addSubject(): void {
-        const subject = this.subjectForm.get('subject').value;
-        this.subjects.push(subject);
-        this.subjectForm.reset();
+        const title = this.titleForm.get('title').value;
+        this.themes.push(new Theme(title));
+        this.titleForm.reset();
     }
 }

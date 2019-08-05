@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
-import { HomeComponent } from './home.component';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
+import { HomeComponent } from './home.component';
 import { SidebarModule } from '../sidebar/sidebar.module';
 
 @NgModule({
@@ -9,7 +11,8 @@ import { SidebarModule } from '../sidebar/sidebar.module';
     ],
     imports: [
         CommonModule,
-        SidebarModule
+        SidebarModule,
+        RouterModule
     ]
 })
 export class HomeModule { }
