@@ -1,0 +1,12 @@
+<div class="sidebar">
+    <form [formGroup]="subjectForm" class="form-group" (submit)="addSubject()">
+        <input formControlName="subject" type="text" class="form-control">
+        <button [disabled]="subjectForm.invalid" class="btn btn-primary form-control">Adicionar</button>
+    </form>
+
+    <div>
+        <ul class="list-unstyled subjects">
+            <li *ngFor="let s of subjects" class="p-2">{{ s }}</li>
+        </ul>
+    </div>
+</div>
