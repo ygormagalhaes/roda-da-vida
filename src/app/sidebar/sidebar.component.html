@@ -4,9 +4,11 @@
         <button [disabled]="titleForm.invalid" class="btn btn-primary form-control">Adicionar</button>
     </form>
 
-    <div>
+    <div *ngIf="(themes$ | async) as themes">
         <ul class="list-unstyled themes">
-            <li *ngFor="let theme of themes" class="p-2">{{ theme.title }}</li>
+            <li *ngFor="let theme of themes" class="p-2">
+                <a [routerLink]="[theme.slug]">{{ theme.title }}</a>
+            </li>
         </ul>
     </div>
 </div>

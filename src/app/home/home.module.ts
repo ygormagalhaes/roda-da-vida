@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home.component';
 import { SidebarModule } from '../sidebar/sidebar.module';
+import { HomeRoutingModule } from './home.routing';
+import { ThemeDetailModule } from '../theme-detail/theme-detail.module';
 
 @NgModule({
     declarations: [
@@ -12,7 +14,8 @@ import { SidebarModule } from '../sidebar/sidebar.module';
     imports: [
         CommonModule,
         SidebarModule,
-        RouterModule
+        HomeRoutingModule,
+        ThemeDetailModule
     ]
 })
 export class HomeModule { }

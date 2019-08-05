@@ -7,12 +7,12 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'home'
+    redirectTo: 'themes'
   },
   {
-    path: 'home',
-    component: HomeComponent
-  }
+    path: 'themes',
+    loadChildren: './home/home.module#HomeModule'
+  },
 ];
 
 @NgModule({
