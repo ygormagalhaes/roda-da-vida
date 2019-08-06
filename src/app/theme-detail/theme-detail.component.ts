@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { ThemeService } from '../theme/theme.service';
 import { Theme } from '../sidebar/theme';
+import { AlertService } from '../shared/alert/alert.service';
 
 @Component({
     templateUrl: './theme-detail.component.html'
@@ -16,7 +17,8 @@ export class ThemeDetailComponent implements OnInit {
         private activatedRoute: ActivatedRoute,
         private themeService: ThemeService,
         private router: Router,
-        private formBuilder: FormBuilder
+        private formBuilder: FormBuilder,
+        private alertService: AlertService
     ) { }
 
     ngOnInit() {
@@ -85,5 +87,6 @@ export class ThemeDetailComponent implements OnInit {
     update(): void {
         const theme = this.themeDetailForm.getRawValue();
         this.themeService.update(theme);
+        this.alertService.setAlert('Tema atualizado!');
     }
 }
