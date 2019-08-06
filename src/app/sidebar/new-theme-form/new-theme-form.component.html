@@ -1,13 +1,13 @@
-<form [formGroup]="themeForm" (submit)="addSubject()">
+<form [formGroup]="newThemeForm" (submit)="addSubject()">
     <div class="form-group">
         <label for="themeTitle">Tema</label>
         <input #inputThemeTitle id="themeTitle" formControlName="title" type="text" class="form-control" placeholder="Nome do novo tema">
-        <app-validation-message *ngIf="themeForm.get('title').errors?.required && themeForm.touched">
+        <app-validation-message *ngIf="newThemeForm.get('title').errors?.required && newThemeForm.touched">
             Nome obrigatório.
         </app-validation-message>
-        <app-validation-message *ngIf="themeForm.get('title').errors?.maxlength">
+        <app-validation-message *ngIf="newThemeForm.get('title').errors?.maxlength">
             Tamanho máximo de 20 caracteres.
         </app-validation-message>
     </div>
-    <button [disabled]="themeForm.invalid" class="btn btn-primary">Adicionar</button>
+    <button [disabled]="newThemeForm.invalid" class="btn btn-primary">Adicionar</button>
 </form>
