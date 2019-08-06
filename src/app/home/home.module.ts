@@ -5,6 +5,7 @@ import { HomeComponent } from './home.component';
 import { SidebarModule } from '../sidebar/sidebar.module';
 import { HomeRoutingModule } from './home.routing';
 import { ThemeDetailModule } from '../theme-detail/theme-detail.module';
+import { AlertModule } from '../shared/alert/alert.module';
 
 @NgModule({
     declarations: [
@@ -14,7 +15,8 @@ import { ThemeDetailModule } from '../theme-detail/theme-detail.module';
         CommonModule,
         SidebarModule,
         HomeRoutingModule,
-        ThemeDetailModule
+        ThemeDetailModule,
+        AlertModule
     ]
 })
 export class HomeModule { }
