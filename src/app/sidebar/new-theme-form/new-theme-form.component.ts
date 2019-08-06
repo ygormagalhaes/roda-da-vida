@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { ThemeService } from 'src/app/theme/theme.service';
 import { Theme } from '../theme';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-theme-form',
@@ -17,6 +18,7 @@ export class NewThemeFormComponent implements OnInit {
     constructor(
         private formBuilder: FormBuilder,
         private themeService: ThemeService,
+        private router: Router
     ) { }
 
     ngOnInit() {
@@ -29,9 +31,11 @@ export class NewThemeFormComponent implements OnInit {
         this.inputThemeTitle.nativeElement.focus();
     }
 
-    addSubject(): void {
+    addTheme(): void {
         const title = this.newThemeForm.get('title').value;
-        this.themeService.add(new Theme(title));
+        const newTheme = new Theme(title);
+        this.themeService.add(newTheme);
         this.newThemeForm.reset();
+        this.router.navigate(['themes', newTheme.slug]);
     }
 }
