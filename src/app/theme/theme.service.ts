@@ -25,7 +25,7 @@ export class ThemeService {
 
     update(theme: Theme): void {
         const index = this.themes.findIndex(currentTheme => currentTheme.slug === theme.slug);
-        if (index > 0) {
+        if (index > -1) {
             this.themes[index] = theme;
             this.themeSubject.next(this.themes);
         }

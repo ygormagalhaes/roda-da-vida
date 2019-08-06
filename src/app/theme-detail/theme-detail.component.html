@@ -1,7 +1,7 @@
 <div *ngIf="theme">
     <h3>{{ theme.title }}</h3>
     <hr>
-    <form [formGroup]="themeDetailForm">
+    <form [formGroup]="themeDetailForm" (submit)="update()">
 
         <div class="form-group">
             <label for="grade">Nota atual {{ themeDetailForm.get('grade').value }}</label>

@@ -2,6 +2,7 @@ import { Action } from './action';
 
 export class Theme {
     slug: string;
+    grade: number;
     action: Action;
     constructor(public title: string) {
         this.slugify();

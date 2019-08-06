@@ -21,7 +21,6 @@ export class ThemeDetailComponent implements OnInit {
 
     ngOnInit() {
         this.loadTheme();
-        this.createForm();
     }
 
     private loadTheme() {
@@ -30,34 +29,61 @@ export class ThemeDetailComponent implements OnInit {
             this.theme = this.themeService.getBySlug(slug);
             if (!this.theme) {
                 this.router.navigate(['']);
+            } else {
+                this.createForm();
             }
         });
     }
 
     private createForm() {
         this.themeDetailForm = this.formBuilder.group({
-            grade: [1, [
-                Validators.required,
-                Validators.min(0),
-                Validators.max(10)
-            ]],
+            slug: [this.theme.slug],
+            title: [this.theme.title],
+            grade: [
+                this.theme.grade ? this.theme.grade : 1,
+                [
+                    Validators.required,
+                    Validators.min(0),
+                    Validators.max(10)
+                ]
+            ],
             action: this.formBuilder.group({
-                past: ['', [
-                    Validators.required,
-                    Validators.minLength(16),
-                    Validators.maxLength(255)
-                ]],
-                present: ['', [
-                    Validators.required,
-                    Validators.minLength(16),
-                    Validators.maxLength(255)
-                ]],
-                future: ['', [
-                    Validators.required,
-                    Validators.minLength(16),
-                    Validators.maxLength(255)
-                ]]
+                past: [
+                    this.getActionContent('past'),
+                    [
+                        Validators.required,
+                        Validators.minLength(16),
+                        Validators.maxLength(255)
+                    ]
+                ],
+                present: [
+                    this.getActionContent('present'),
+                    [
+                        Validators.required,
+                        Validators.minLength(16),
+                        Validators.maxLength(255)
+                    ]
+                ],
+                future: [
+                    this.getActionContent('future'),
+                    [
+                        Validators.required,
+                        Validators.minLength(16),
+                        Validators.maxLength(255)
+                    ]
+                ]
             })
         });
+    }
+
+    private getActionContent(field: string): string {
+        return this.theme.action && this.theme.action[field]
+            ? this.theme.action[field]
+            : '';
+    }
+
+    update(): void {
+        const theme = this.themeDetailForm.getRawValue();
+        this.themeService.update(theme);
     }
 }
