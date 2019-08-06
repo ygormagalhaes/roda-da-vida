@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { ThemeService } from '../theme/theme.service';
 import { Theme } from '../sidebar/theme';
@@ -12,11 +12,17 @@ export class ThemeDetailComponent implements OnInit {
 
     constructor(
         private activatedRoute: ActivatedRoute,
-        private themeService: ThemeService
+        private themeService: ThemeService,
+        private router: Router
     ) { }
 
     ngOnInit() {
-        const slug = this.activatedRoute.snapshot.params.slug;
-        this.theme = this.themeService.getBySlug(slug);
+        this.activatedRoute.params.subscribe(params => {
+            const slug = params.slug;
+            this.theme = this.themeService.getBySlug(slug);
+            if (!this.theme) {
+                this.router.navigate(['']);
+            }
+        });
     }
 }
