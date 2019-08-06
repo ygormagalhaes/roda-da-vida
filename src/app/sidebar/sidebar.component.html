@@ -1,11 +1,5 @@
 <div class="sidebar p-3">
     <app-theme-form></app-theme-form>
-
-    <div *ngIf="(themes$ | async) as themes">
-        <ul class="list-unstyled themes">
-            <li *ngFor="let theme of themes" class="p-2">
-                <a [routerLink]="[theme.slug]">{{ theme.title }}</a>
-            </li>
-        </ul>
-    </div>
+    <hr>
+    <app-theme-list></app-theme-list>
 </div>
