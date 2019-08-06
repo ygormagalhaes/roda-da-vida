@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { SidebarComponent } from './sidebar.component';
-import { RouterModule } from '@angular/router';
+import { ThemeFormComponent } from './theme-form/theme-form.component';
 
 @NgModule({
     declarations: [
-        SidebarComponent
+        SidebarComponent,
+        ThemeFormComponent
     ],
     imports: [
         CommonModule,

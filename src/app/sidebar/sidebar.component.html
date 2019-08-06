@@ -1,8 +1,5 @@
-<div class="sidebar">
-    <form [formGroup]="titleForm" class="form-group" (submit)="addSubject()">
-        <input formControlName="title" type="text" class="form-control">
-        <button [disabled]="titleForm.invalid" class="btn btn-primary form-control">Adicionar</button>
-    </form>
+<div class="sidebar p-3">
+    <app-theme-form></app-theme-form>
 
     <div *ngIf="(themes$ | async) as themes">
         <ul class="list-unstyled themes">

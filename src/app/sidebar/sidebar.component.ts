@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { Theme } from './theme';
-import { ThemeService } from '../theme/theme.service';
 import { Observable } from 'rxjs';
+
+import { ThemeService } from '../theme/theme.service';
 
 @Component({
     selector: 'app-sidebar',
@@ -12,26 +13,12 @@ import { Observable } from 'rxjs';
 })
 export class SidebarComponent implements OnInit {
     themes$: Observable<Theme[]>;
-    titleForm: FormGroup;
 
     constructor(
-        private formBuilder: FormBuilder,
         private themeService: ThemeService,
     ) { }
 
     ngOnInit() {
-        this.titleForm = this.formBuilder.group({
-            title: ['', [
-                Validators.required,
-                Validators.maxLength(20)
-            ]]
-        });
         this.themes$ = this.themeService.getThemes();
-    }
-
-    addSubject(): void {
-        const title = this.titleForm.get('title').value;
-        this.themeService.add(new Theme(title));
-        this.titleForm.reset();
     }
 }
