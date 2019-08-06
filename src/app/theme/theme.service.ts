@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { of, Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 
 import { Theme } from '../sidebar/theme';
 
@@ -21,5 +21,13 @@ export class ThemeService {
 
     getThemes() {
         return this.themeSubject.asObservable();
+    }
+
+    update(theme: Theme): void {
+        const index = this.themes.findIndex(currentTheme => currentTheme.slug === theme.slug);
+        if (index > 0) {
+            this.themes[index] = theme;
+            this.themeSubject.next(this.themes);
+        }
     }
 }
