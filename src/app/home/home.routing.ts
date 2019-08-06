@@ -10,7 +10,7 @@ const routes: Routes = [
     component: HomeComponent,
     children: [
         {
-            path: ':theme',
+            path: ':slug',
             component: ThemeDetailComponent
         }
     ]
