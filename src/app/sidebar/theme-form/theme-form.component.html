@@ -2,7 +2,12 @@
     <div class="form-group">
         <label for="themeTitle">Tema</label>
         <input id="themeTitle" formControlName="title" type="text" class="form-control" placeholder="Nome do novo tema">
-        <small class="text-danger" *ngIf="themeForm.get('title').errors?.required">Nome obrigatório</small>
+        <app-validation-message *ngIf="themeForm.get('title').errors?.required && themeForm.touched">
+            Nome obrigatório.
+        </app-validation-message>
+        <app-validation-message *ngIf="themeForm.get('title').errors?.maxlength">
+            Tamanho máximo de 20 caracteres.
+        </app-validation-message>
     </div>
     <button [disabled]="themeForm.invalid" class="btn btn-primary">Adicionar</button>
 </form>

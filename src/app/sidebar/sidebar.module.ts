@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 
 import { SidebarComponent } from './sidebar.component';
 import { ThemeFormComponent } from './theme-form/theme-form.component';
+import { ValidationMessageModule } from '../shared/validation-message/validation-message.module';
 
 @NgModule({
     declarations: [
@@ -14,7 +15,8 @@ import { ThemeFormComponent } from './theme-form/theme-form.component';
     imports: [
         CommonModule,
         ReactiveFormsModule,
-        RouterModule
+        RouterModule,
+        ValidationMessageModule
     ],
     exports: [
         SidebarComponent
