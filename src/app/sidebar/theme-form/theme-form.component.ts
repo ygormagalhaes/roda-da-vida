@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { ThemeService } from 'src/app/theme/theme.service';
@@ -10,6 +10,9 @@ import { Theme } from '../theme';
 })
 export class ThemeFormComponent implements OnInit {
     themeForm: FormGroup;
+
+    @ViewChild('inputThemeTitle', { static: true })
+    inputThemeTitle: ElementRef<HTMLInputElement>;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -23,6 +26,7 @@ export class ThemeFormComponent implements OnInit {
                 Validators.maxLength(20)
             ]]
         });
+        this.inputThemeTitle.nativeElement.focus();
     }
 
     addSubject(): void {
