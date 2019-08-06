@@ -2,7 +2,7 @@ import { Action } from './action';
 
 export class Theme {
     slug: string;
-    actions: Action;
+    action: Action;
     constructor(public title: string) {
         this.slugify();
     }

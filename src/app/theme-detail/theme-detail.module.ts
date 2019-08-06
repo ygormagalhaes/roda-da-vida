@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { ThemeDetailComponent } from './theme-detail.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ValidationMessageModule } from '../shared/validation-message/validation-message.module';
 
 @NgModule({
     declarations: [
@@ -12,7 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     imports: [
         CommonModule,
         ReactiveFormsModule,
-        RouterModule
+        RouterModule,
+        ValidationMessageModule
     ]
 })
 export class ThemeDetailModule { }

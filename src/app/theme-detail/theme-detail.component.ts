@@ -40,7 +40,24 @@ export class ThemeDetailComponent implements OnInit {
                 Validators.required,
                 Validators.min(0),
                 Validators.max(10)
-            ]]
+            ]],
+            action: this.formBuilder.group({
+                past: ['', [
+                    Validators.required,
+                    Validators.minLength(16),
+                    Validators.maxLength(255)
+                ]],
+                present: ['', [
+                    Validators.required,
+                    Validators.minLength(16),
+                    Validators.maxLength(255)
+                ]],
+                future: ['', [
+                    Validators.required,
+                    Validators.minLength(16),
+                    Validators.maxLength(255)
+                ]]
+            })
         });
     }
 }

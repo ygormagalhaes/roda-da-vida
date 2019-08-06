@@ -2,9 +2,54 @@
     <h3>{{ theme.title }}</h3>
     <hr>
     <form [formGroup]="themeDetailForm">
+
         <div class="form-group">
             <label for="grade">Nota atual {{ themeDetailForm.get('grade').value }}</label>
             <input formControlName="grade" type="range" id="grade" class="form-control" step="1" min="1" max="10">
         </div>
+
+        <ng-container formGroupName="action">
+            <div class="form-group">
+                <label for="past">O que eu já fiz?</label>
+                <textarea formControlName="past" class="form-control" id="past" rows="2"></textarea>
+                <app-validation-message *ngIf="themeDetailForm.get('action').get('past').errors?.required">
+                    Campo obrigatório.
+                </app-validation-message>
+                <app-validation-message *ngIf="themeDetailForm.get('action').get('past').errors?.minlength">
+                    Mínimo de 16 caracteres.
+                </app-validation-message>
+                <app-validation-message *ngIf="themeDetailForm.get('action').get('past').errors?.maxlength">
+                    Máximo de 255 caracteres.
+                </app-validation-message>
+            </div>
+            <div class="form-group">
+                <label for="present">O que eu faço hoje?</label>
+                <textarea formControlName="present" class="form-control" id="present" rows="2"></textarea>
+                <app-validation-message *ngIf="themeDetailForm.get('action').get('present').errors?.required">
+                    Campo obrigatório.
+                </app-validation-message>
+                <app-validation-message *ngIf="themeDetailForm.get('action').get('present').errors?.minlength">
+                    Mínimo de 16 caracteres.
+                </app-validation-message>
+                <app-validation-message *ngIf="themeDetailForm.get('action').get('present').errors?.maxlength">
+                    Máximo de 255 caracteres.
+                </app-validation-message>
+            </div>
+            <div class="form-group">
+                <label for="future">O que eu quero fazer?</label>
+                <textarea formControlName="future" class="form-control" id="future" rows="2"></textarea>
+                <app-validation-message *ngIf="themeDetailForm.get('action').get('future').errors?.required">
+                    Campo obrigatório.
+                </app-validation-message>
+                <app-validation-message *ngIf="themeDetailForm.get('action').get('future').errors?.minlength">
+                    Mínimo de 16 caracteres.
+                </app-validation-message>
+                <app-validation-message *ngIf="themeDetailForm.get('action').get('future').errors?.maxlength">
+                    Máximo de 255 caracteres.
+                </app-validation-message>
+            </div>
+        </ng-container>
+
+        <button [disabled]="themeDetailForm.invalid" class="btn btn-primary">Salvar</button>
     </form>
 </div>

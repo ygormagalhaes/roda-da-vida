@@ -25,7 +25,8 @@ export class NewThemeFormComponent implements OnInit {
         this.newThemeForm = this.formBuilder.group({
             title: ['', [
                 Validators.required,
-                Validators.maxLength(20)
+                Validators.maxLength(20),
+                Validators.minLength(4)
             ]]
         });
         this.inputThemeTitle.nativeElement.focus();
