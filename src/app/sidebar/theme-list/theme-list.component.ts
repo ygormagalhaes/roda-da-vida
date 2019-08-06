@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 
 import { Theme } from '../theme';
 import { ThemeService } from 'src/app/theme/theme.service';
+import { map } from 'rxjs/operators';
 
 @Component({
     selector: 'app-theme-list',
@@ -16,6 +17,13 @@ export class ThemeListComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.themes$ = this.themeService.getThemes();
+        this.themes$ = this.themeService.getThemes().pipe(map(themes => themes.sort((a, b) => {
+            if (a.slug > b.slug) {
+                return 1;
+            } else if (a.slug < b.slug) {
+                return -1;
+            }
+            return 0;
+        })));
     }
 }

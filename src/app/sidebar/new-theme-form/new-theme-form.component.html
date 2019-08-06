@@ -3,7 +3,7 @@
         <label for="themeTitle">Tema</label>
         <input #inputThemeTitle id="themeTitle" formControlName="title" type="text" class="form-control"
             placeholder="Nome do novo tema">
-        <app-validation-message *ngIf="newThemeForm.get('title').errors?.required && newThemeForm.touched">
+        <app-validation-message *ngIf="newThemeForm.get('title').errors?.required">
             Nome obrigatório.
         </app-validation-message>
         <app-validation-message *ngIf="newThemeForm.get('title').errors?.maxlength">

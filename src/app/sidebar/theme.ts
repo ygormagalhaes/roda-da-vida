@@ -4,6 +4,7 @@ export class Theme {
     slug: string;
     grade: number;
     action: Action;
+    status = false;
     constructor(public title: string) {
         this.slugify();
     }
