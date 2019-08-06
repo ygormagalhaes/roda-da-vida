@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { ThemeDetailComponent } from './theme-detail.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -10,6 +11,7 @@ import { ThemeDetailComponent } from './theme-detail.component';
     ],
     imports: [
         CommonModule,
+        ReactiveFormsModule,
         RouterModule
     ]
 })

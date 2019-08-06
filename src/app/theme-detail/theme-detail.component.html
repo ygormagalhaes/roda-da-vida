@@ -1,9 +1,10 @@
 <div *ngIf="theme">
     <h3>{{ theme.title }}</h3>
-    <form>
+    <hr>
+    <form [formGroup]="themeDetailForm">
         <div class="form-group">
-            <label for="grade">Nota atual</label>
-            <input type="range" id="grade" class="form-control" step="1" min="0" max="10">
+            <label for="grade">Nota atual {{ themeDetailForm.get('grade').value }}</label>
+            <input formControlName="grade" type="range" id="grade" class="form-control" step="1" min="1" max="10">
         </div>
     </form>
 </div>
