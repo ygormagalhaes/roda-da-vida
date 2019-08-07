@@ -1,0 +1,12 @@
+<hr>
+<ul class="list-unstyled">
+    <li class="p-1">
+        <a [routerLink]="['/themes', 'intro']">Sobre</a>
+    </li>
+    <ng-container *ngIf="isDashboardAvailable()">
+        <li class="p-1">
+            <a [routerLink]="['/themes', 'dashboard']">Gráfico</a>
+        </li>
+    </ng-container>
+</ul>
+<hr>

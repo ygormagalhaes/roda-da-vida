@@ -6,10 +6,12 @@ import { SidebarModule } from '../sidebar/sidebar.module';
 import { HomeRoutingModule } from './home.routing';
 import { ThemeDetailModule } from '../theme-detail/theme-detail.module';
 import { AlertModule } from '../shared/alert/alert.module';
+import { IntroComponent } from './intro/intro.component';
 
 @NgModule({
     declarations: [
-        HomeComponent
+        HomeComponent,
+        IntroComponent
     ],
     imports: [
         CommonModule,

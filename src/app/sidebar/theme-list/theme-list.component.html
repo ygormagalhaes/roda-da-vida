@@ -1,6 +1,6 @@
 <div *ngIf="(themes$ | async) as themes">
     <ul class="list-unstyled themes">
-        <li *ngFor="let theme of themes" class="p-2 text-info">
+        <li *ngFor="let theme of themes" class="p-1 text-info">
             <a [routerLink]="[theme.slug]">{{ theme.title }}</a>
             &nbsp;<span class="badge badge-pill badge-light" data-toggle="tooltip" data-placement="right" title="Teste">{{theme.status ? '✔' : '❌'}}</span>
         </li>

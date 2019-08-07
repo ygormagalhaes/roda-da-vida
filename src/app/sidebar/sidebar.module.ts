@@ -7,12 +7,14 @@ import { SidebarComponent } from './sidebar.component';
 import { NewThemeFormComponent } from './new-theme-form/new-theme-form.component';
 import { ValidationMessageModule } from '../shared/validation-message/validation-message.module';
 import { ThemeListComponent } from './theme-list/theme-list.component';
+import { MenuListComponent } from './menu-list/menu-list.component';
 
 @NgModule({
     declarations: [
         SidebarComponent,
         NewThemeFormComponent,
-        ThemeListComponent
+        ThemeListComponent,
+        MenuListComponent
     ],
     imports: [
         CommonModule,
