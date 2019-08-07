@@ -9,10 +9,15 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
     children: [
-        {
-            path: ':slug',
-            component: ThemeDetailComponent
-        }
+      {
+        path: 'dashboard',
+        pathMatch: 'full',
+        loadChildren: '../dashboard/dashboard.module#DashboardModule'
+      },
+      {
+        path: ':slug',
+        component: ThemeDetailComponent
+      }
     ]
   }
 ];
