@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import * as VariablePie from 'highcharts/modules/variable-pie';
+import { ThemeService } from '../theme/theme.service';
 
 (VariablePie as any)(Highcharts);
 
@@ -9,9 +10,29 @@ import * as VariablePie from 'highcharts/modules/variable-pie';
 })
 export class DashboardComponent implements OnInit {
 
+    constructor(private themeService: ThemeService) { }
+
     ngOnInit(): void {
 
+        this.themeService.getThemes()
+            .subscribe(themes => {
+                const areaPerTheme = 100 / themes.length;
+                const data = themes.map(theme => {
+                    return {
+                        name: `${theme.title} - ${theme.grade ? theme.grade : 0}`,
+                        y: areaPerTheme,
+                        z: theme.grade
+                    };
+                });
+                this.updateChart(data);
+            });
+    }
+
+    private updateChart(data: any): void {
         Highcharts.chart('variable-pie', {
+            tooltip: {
+                enabled: false
+            },
             title: {
                 text: 'Resultados'
             },
@@ -22,33 +43,12 @@ export class DashboardComponent implements OnInit {
             series: [{
                 type: 'variablepie',
                 minPointSize: 10,
-                innerSize: '20%',
+                innerSize: '5%',
                 zMin: 0,
-                name: 'countries',
-                data: [{
-                    name: 'Poland',
-                    y: 20,
-                    z: 124.6
-                }, {
-                    name: 'Czech Republic',
-                    y: 20,
-                    z: 137.5
-                }, {
-                    name: 'Italy',
-                    y: 20,
-                    z: 201.8
-                }, {
-                    name: 'Switzerland',
-                    y: 20,
-                    z: 214.5
-                }, {
-                    name: 'Germany',
-                    y: 20,
-                    z: 235.6
-                }]
+                name: 'Tema',
+                data
             }]
         });
-
     }
 
 }
