@@ -7,6 +7,7 @@ import { HomeRoutingModule } from './home.routing';
 import { ThemeDetailModule } from '../theme-detail/theme-detail.module';
 import { AlertModule } from '../shared/alert/alert.module';
 import { IntroComponent } from './intro/intro.component';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { IntroComponent } from './intro/intro.component';
         SidebarModule,
         HomeRoutingModule,
         ThemeDetailModule,
-        AlertModule
+        AlertModule,
+        CoreModule
     ]
 })
 export class HomeModule { }
