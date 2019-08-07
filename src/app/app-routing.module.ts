@@ -12,11 +12,7 @@ const routes: Routes = [
   {
     path: 'themes',
     loadChildren: './home/home.module#HomeModule'
-  },
-  {
-    path: 'dashboard',
-    loadChildren: './dashboard/dashboard.module#DashboardModule'
-  },
+  }
 ];
 
 @NgModule({
